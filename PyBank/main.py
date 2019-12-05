@@ -18,7 +18,6 @@ with open(csvpath, newline='') as csvfile:
     
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
 
     for row in csvreader:
         months += 1
@@ -34,7 +33,7 @@ with open(csvpath, newline='') as csvfile:
 avgchg = round(netamount/months,2)
 
 print("Financial Analysis")
-print("--------------------------------------")
+print("------------------")
 print("Total Months: "+str(months))
 print("Total: $"+str(netamount))
 print("Average  Change: $"+str(avgchg))
