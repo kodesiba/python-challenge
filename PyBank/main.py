@@ -16,7 +16,7 @@ with open(csvpath, newline='') as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
     
-    # Read the header row first (skip this step if there is now header)
+    # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
 
     for row in csvreader:
