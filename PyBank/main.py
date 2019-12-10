@@ -22,10 +22,11 @@ with open(csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        #calculate variables
+        #check if first month, if so set previous row to current row to nullify change calculation
         if months==0:
             previousrow = int(row[1])
 
+        #calculate variables
         months += 1
         netamount += int(row[1])
         profitchange = int(row[1]) - previousrow
@@ -41,12 +42,11 @@ with open(csvpath, newline='') as csvfile:
             maxdown = profitchange
             maxdownmonth = row[0]
         
-        #set previous row value
+        #set previous row value for next calculations
         previousrow = int(row[1])
 
 #calculate average change
 avgchg = round(totalchg/(months-1),2)
-print(totalchg)
 
 #print out results
 print("Financial Analysis")
