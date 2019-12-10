@@ -49,7 +49,7 @@ with open(csvpath, newline='') as csvfile:
 #calculate average change
 avgchg = round(totalchg/(months-1),2)
 
-#print out results
+#print out results to terminal
 print("Financial Analysis")
 print("------------------")
 print("Total Months: "+str(months))
@@ -57,3 +57,16 @@ print("Total: $"+str(netamount))
 print("Average  Change: $"+str(avgchg))
 print("Greatest Increase in Profits: "+maxupmonth+" $"+str(maxup))
 print("Greatest Decrease in Profits: "+maxdownmonth+" $"+str(maxdown))
+
+#create output file
+outfilepath = os.path.join("output","output.txt")
+outfile = open(outfilepath,"w")
+
+#write file text
+outfile.writelines("Financial Analysis")
+outfile.writelines("\n------------------")
+outfile.writelines("\nTotal Months: "+str(months))
+outfile.writelines("\nTotal: $"+str(netamount))
+outfile.writelines("\nAverage  Change: $"+str(avgchg))
+outfile.writelines("\nGreatest Increase in Profits: "+maxupmonth+" $"+str(maxup))
+outfile.writelines("\nGreatest Decrease in Profits: "+maxdownmonth+" $"+str(maxdown))

@@ -53,3 +53,20 @@ for p in range(len(candidates)):
 print("----------------")
 print("Winner: "+winner)
 print("----------------")
+
+#create output file
+outfilepath = os.path.join("output","output.txt")
+outfile = open(outfilepath,"w")
+
+#write file text
+outfile.writelines("Election Results")
+outfile.writelines("\n----------------")
+outfile.writelines("\nTotal Votes: "+str(voters))
+for p in range(len(candidates)):
+    outfile.writelines("\n"+candidates[p]+": "+str(candidatevotepercent[p])+"% ("+str(candidatevotes[p])+")")
+    if candidatevotes[p] > winningvotes:
+        winningvotes = candidatevotes[p]
+        winner = candidates[p]
+outfile.writelines("\n----------------")
+outfile.writelines("\nWinner: "+winner)
+outfile.writelines("\n----------------")
