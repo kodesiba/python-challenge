@@ -23,6 +23,9 @@ with open(csvpath, newline='') as csvfile:
 
     for row in csvreader:
         #calculate variables
+        if months==0:
+            previousrow = int(row[1])
+
         months += 1
         netamount += int(row[1])
         profitchange = int(row[1]) - previousrow
@@ -42,7 +45,7 @@ with open(csvpath, newline='') as csvfile:
         previousrow = int(row[1])
 
 #calculate average change
-avgchg = round(totalchg/months,2)
+avgchg = round(totalchg/(months-1),2)
 print(totalchg)
 
 #print out results
