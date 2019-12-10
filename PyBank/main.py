@@ -21,6 +21,7 @@ with open(csvpath, newline='') as csvfile:
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
 
+    #iterate through csv rows
     for row in csvreader:
         #check if first month, if so set previous row to current row to nullify change calculation
         if months==0:

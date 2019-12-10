@@ -21,6 +21,7 @@ with open(csvpath, newline='') as csvfile:
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
 
+    #iterate through csv rows
     for row in csvreader:
         #calculate voters and create local vars
         voters += 1
