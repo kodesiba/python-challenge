@@ -20,18 +20,24 @@ with open(csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
+        #calculate months and net
         months += 1
         netamount += int(row[1])
+
+        #check for max increase
         if int(row[1])> maxup:
             maxup = int(row[1])
             maxupmonth = row[0]
         
+        #check for max decrease
         if int(row[1])<maxdown:
             maxdown = int(row[1])
             maxdownmonth = row[0]
 
+#calculate average change
 avgchg = round(netamount/months,2)
 
+#print out results
 print("Financial Analysis")
 print("------------------")
 print("Total Months: "+str(months))

@@ -22,8 +22,11 @@ with open(csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
+        #calculate voters and create local vars
         voters += 1
         candidate = row[2]
+
+        #check to see if new candidate and update items accordingly
         if candidate not in candidates:
             candidatecounter += 1
             candidates.append(candidate)
@@ -32,12 +35,12 @@ with open(csvpath, newline='') as csvfile:
             currentcandidate = candidates.index(candidate)
             candidatevotes[currentcandidate] += 1
 
-
+#summarize candidate data
 for i in range(len(candidates)):
     voterpct = round(candidatevotes[i]/voters*100,3)
     candidatevotepercent.append(voterpct)
     
-
+#print results
 print("Election Results")
 print("----------------")
 print("Total Votes: "+str(voters))
