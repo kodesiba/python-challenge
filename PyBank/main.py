@@ -9,6 +9,8 @@ months = 0
 netamount = 0
 maxup = 0
 maxdown = 0
+previousrow = 0
+totalchg = 0
 
 #read in data
 with open(csvpath, newline='') as csvfile:
@@ -20,22 +22,28 @@ with open(csvpath, newline='') as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        #calculate months and net
+        #calculate variables
         months += 1
         netamount += int(row[1])
+        profitchange = int(row[1]) - previousrow
+        totalchg += profitchange
 
         #check for max increase
-        if int(row[1])> maxup:
-            maxup = int(row[1])
+        if profitchange> maxup:
+            maxup = profitchange
             maxupmonth = row[0]
         
         #check for max decrease
-        if int(row[1])<maxdown:
-            maxdown = int(row[1])
+        if profitchange<maxdown:
+            maxdown = profitchange
             maxdownmonth = row[0]
+        
+        #set previous row value
+        previousrow = int(row[1])
 
 #calculate average change
-avgchg = round(netamount/months,2)
+avgchg = round(totalchg/months,2)
+print(totalchg)
 
 #print out results
 print("Financial Analysis")
