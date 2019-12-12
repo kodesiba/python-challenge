@@ -62,6 +62,7 @@ outfile = open(outfilepath,"w")
 outfile.writelines("Election Results")
 outfile.writelines("\n----------------")
 outfile.writelines("\nTotal Votes: "+str(voters))
+outfile.writelines("\n----------------")
 for p in range(len(candidates)):
     outfile.writelines("\n"+candidates[p]+": "+str(candidatevotepercent[p])+"% ("+str(candidatevotes[p])+")")
     if candidatevotes[p] > winningvotes:
