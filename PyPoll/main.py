@@ -45,6 +45,7 @@ for i in range(len(candidates)):
 print("Election Results")
 print("----------------")
 print("Total Votes: "+str(voters))
+print("----------------")
 for p in range(len(candidates)):
     print(candidates[p]+": "+str(candidatevotepercent[p])+"% ("+str(candidatevotes[p])+")")
     if candidatevotes[p] > winningvotes:
